@@ -79,6 +79,11 @@ class ReviewDetail(APIView):
         review.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class ProductWithReviews(APIView):
+    def get(self, request):
 
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
 
 
