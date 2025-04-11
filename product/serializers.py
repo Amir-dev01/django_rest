@@ -9,10 +9,13 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    product_count = serializers.IntegerField()
+    product_count = serializers.SerializerMethodField()
     class Meta:
         model = Category
         fields = ['id', 'name', 'product_count']
+
+    def get_product_count(self, category):
+            return Product.objects.filter(category=category).count()
 
 
 class ProductSerializer(serializers.ModelSerializer):
