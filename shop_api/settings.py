@@ -2,6 +2,9 @@
 from pathlib import Path
 from . import admin_panel
 import os
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path='.env')
 
 JAZZMIN_SETTINGS = admin_panel.JAZZMIN_SETTINGS
 JAZZMIN_UI_TWEAKS = admin_panel.JAZZMIN_UI_TWEAKS
